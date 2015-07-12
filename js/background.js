@@ -5,7 +5,6 @@ var storageKey = "ManyClip",
       storageObject[storageKey] = clips;
 
       chrome.storage.local.set(storageObject, function () {
-          console.log('Saved', value);
           console.log(chrome.runtime.lastError);
       });
     }
@@ -60,7 +59,9 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
       break;
     case "stackPaste":
       clipboardManager.paste(function (clip) {
-        sendResponse({ success: true, data: clip })
+        chrome.tabs.query({active: true, currentWindow: true}, function(tabs){
+          chrome.tabs.sendMessage(tabs[0].id, { success: true, type: "stackPaste", data: clip }, function(response) {});  
+        });
       });
       break;
     case "getSnibbits":

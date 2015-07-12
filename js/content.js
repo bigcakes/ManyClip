@@ -25,9 +25,12 @@
 		$(document).on("keydown", function(e) {
 			if((e.keyCode == 67) && e.ctrlKey && e.shiftKey) { //ctrl + shift + c
 				document.execCommand('copy');
-				var x = window.scrollX, y = window.scrollY;
-				var $text = $("body").append("<textarea id='ManyClipTemp' style='display:none;'></textarea>").find("#ManyClipTemp");
-				$text.focus().val("")
+				var x = window.scrollX, 
+					y = window.scrollY,
+					$text = $("body")
+						.append("<textarea id='ManyClipTemp' style=''></textarea>").find("#ManyClipTemp");
+
+				$text.focus();
 				document.execCommand("paste")
 				var clip = $text.val();
 				$text.remove();
@@ -41,18 +44,29 @@
 			}
 			else if((e.keyCode == 86) && e.ctrlKey && e.shiftKey) { //ctrl + shift + v
 				chrome.runtime.sendMessage({ type:"stackPaste" }, function(response) {
-					console.log(response);
-				var x = window.scrollX, y = window.scrollY;
-					var $text = $("body").append("<textarea id='ManyClipTemp' style='display:none;'></textarea>").find("#ManyClipTemp");
-					$text.focus().text(response.data).select()
-				window.scrollTo(x, y);
 
-					document.execCommand('copy');
-					$text.remove();
 				});
 
 				return false;
 			}
 		});
-	})
+	});
+
+	chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
+		if (request.type == "stackPaste") {
+			console.log(request);
+			var activeElement = document.activeElement,
+				x = window.scrollX, 
+				y = window.scrollY,
+				$text = $("body").append("<textarea id='ManyClipTemp' style=''></textarea>").find("#ManyClipTemp");
+			
+			$text.focus().text(request.data).select()
+			window.scrollTo(x, y);
+
+			document.execCommand('copy');
+			$text.remove();
+			$(activeElement).focus();
+			document.execCommand("paste")
+		}
+	});
 })(window);
