@@ -2,12 +2,17 @@
   "manifest_version": 2,
 
   "name": "ManyClip",
-  "description": "This extension allows you to copy/paste many things.",
+  "description": "A stack based copy/paste extension for Chrome.",
   "version": "0.1.0",
   "offline_enabled": true,
   "browser_action": {
-    "default_icon": "icon.png",
+    "default_icon": "icons/manyclip_med.png",
     "default_popup": "popup.html"
+  },
+  "icons": { 
+    "16": "icons/manyclip_small.png",
+    "48": "icons/manyclip_med.png",
+    "128": "icons/manyclip_big.png" 
   },
   "background": {
     "scripts": [
