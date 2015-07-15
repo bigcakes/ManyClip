@@ -3,16 +3,16 @@
 
   "name": "ManyClip",
   "description": "A stack based copy/paste extension for Chrome.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "offline_enabled": true,
   "browser_action": {
-    "default_icon": "icons/manyclip_med.png",
+    "default_icon": "icons/manyclip_48.png",
     "default_popup": "popup.html"
   },
   "icons": { 
-    "16": "icons/manyclip_small.png",
-    "48": "icons/manyclip_med.png",
-    "128": "icons/manyclip_big.png" 
+    "16": "icons/manyclip_16.png",
+    "48": "icons/manyclip_48.png",
+    "128": "icons/manyclip_128.png" 
   },
   "background": {
     "scripts": [
