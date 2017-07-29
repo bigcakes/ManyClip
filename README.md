@@ -25,6 +25,8 @@ If you have any issues please email the developer at johnwiegert@outlook.com or 
 - Allow users to cut to a backing stack
 - Make a config option to allow the key binding to change or to just be ctrl + c/ctrl + v
 - View history of clips
+- ~~View current clips~~
+- Toast message for clip/paste
 
 ## Future
 

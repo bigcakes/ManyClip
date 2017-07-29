@@ -1,16 +1,66 @@
 <!doctype html>
 <html>
-  <head>
-    <title>ManyClip</title>
-    <style>
-    </style>
-    <script src="js/popup.js"></script>
-  </head>
-  <body>
-    <div>
-      <span>
-        Configuration options soon to come
-      </span>
-    </div>
-  </body>
+
+<head>
+  <title>ManyClip</title>
+  <style>
+    body {
+      min-width: 400px;
+      font-family: "Open Sans", sans-serif;
+      line-height: 1.25;
+    }
+
+    table {
+      border: 1px solid #ccc;
+      border-collapse: collapse;
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      table-layout: fixed;
+    }
+
+    table tr {
+      background: #f9f9f9;
+      border: 1px solid #ddd;
+      padding: 2px;
+    }
+
+    table th,
+    table td {
+      padding: 7px;
+      text-align: center;
+      word-wrap: break-word;
+    }
+
+    table th {
+      font-size: 15px;
+      text-transform: uppercase;
+    }
+
+    .container {
+      max-height: 300px;
+      overflow-y: scroll;
+    }
+  </style>
+  <script src="js/popup.js"></script>
+  <script src="js/jquery.min.js"></script>
+</head>
+
+<body>
+  <div class="container">
+    <table class="table stack-contents">
+      <thead>
+        <th>Position</th>
+        <th>Contents</th>
+      </thead>
+      <tbody>
+
+      </tbody>
+    </table>
+    <p>
+      Ctrl + alt + c to copy and ctrl + alt + v to paste. Both affect the list of items, but you can also ctrl + v if you want to paste the same thing multiple times.
+    </p>
+  </div>
+</body>
+
 </html>
